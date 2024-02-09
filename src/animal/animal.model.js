@@ -1,11 +1,18 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-const animalSchema = mongoose.Schema({
+const { Schema } = mongoose
+
+const animalSchema = new Schema({
     keeper: {
-        type: Schema.ObjectId, ref: "user",
+        type: Schema.Types.ObjectId,
+        ref: 'user',
         required: true
     },
     name: {
+        type: String,
+        required: true
+    },
+    species: {
         type: String,
         required: true
     },
@@ -14,3 +21,7 @@ const animalSchema = mongoose.Schema({
         required: true
     }
 })
+
+const animal = mongoose.model('animal', animalSchema)
+
+export default animal
